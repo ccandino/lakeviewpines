@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lake View Pines — A Guide for Our Guests</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nunito+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1f4567;
+    --navy-deep: #163651;
+    --navy-soft: #4a7299;
+    --cream: #fdfcf8;
+    --cream-warm: #f7f3ea;
+    --ink: #2a2a2a;
+    --ink-soft: #5a5a5a;
+    --line: #c8d4e0;
+    --line-soft: #e6ebf0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Language switcher ---------- */
+  .lang-switcher {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    z-index: 100;
+    display: flex;
+    gap: 14px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: rgba(253, 252, 248, 0.92);
+    backdrop-filter: blur(8px);
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .lang-switcher button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    padding: 0;
+    transition: color 0.3s ease;
+  }
+  .lang-switcher button:hover { color: var(--navy); }
+  .lang-switcher button.active {
+    color: var(--navy);
+    font-weight: 600;
+    border-bottom: 1px solid var(--navy);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    background: var(--cream);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    color: var(--navy);
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.5s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.8s forwards;
+  }
+
+  .hero-illustration {
+    width: min(640px, 92vw);
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 1.1s forwards;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 32px 0 20px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.7s forwards;
+  }
+  .hero-divider .line {
+    width: 80px;
+    height: 1px;
+    background: var(--navy-soft);
+  }
+  .hero-divider .ornament {
+    color: var(--navy);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: fadeIn 1s ease 1.6s forwards, bounce 2s ease-in-out 2.6s infinite;
+  }
+
+  /* ---------- About me block ---------- */
+  .about-strip {
+    background: var(--cream-warm);
+    padding: 70px 24px;
+    text-align: center;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .about-strip-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .about-strip .small-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .about-strip .script {
+    font-family: 'Allura', cursive;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .about-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Navigation ---------- */
+  .section-nav {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background: rgba(253, 252, 248, 0.92);
+  }
+  .section-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+    list-style: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .section-nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .section-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 1px;
+    background: var(--navy);
+    transition: width 0.3s ease;
+  }
+  .section-nav a:hover { color: var(--navy); }
+  .section-nav a:hover::after { width: 100%; }
+
+  /* ---------- Sections ---------- */
+  section.content {
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    color: var(--navy);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+  .section-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 22px auto 0;
+    line-height: 1.6;
+  }
+
+  /* ---------- Cards grid ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 36px;
+  }
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--line-soft);
+    padding: 36px 32px;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+  .card:hover {
+    border-color: var(--navy-soft);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(31, 69, 103, 0.15);
+  }
+  .card-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--navy-soft);
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+  }
+  .card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .card .meta {
+    font-size: 0.74rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .card p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  /* Taxi / contact list inside a card */
+  .contact-list {
+    margin: 16px 0 4px;
+    border-top: 1px solid var(--line);
+  }
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--navy);
+  }
+  .contact-tel {
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-tel:hover {
+    color: var(--navy);
+    border-bottom-color: var(--navy-soft);
+  }
+  .contact-note {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+
+  /* Practical-tips note below the transport cards */
+  .practical-note {
+    max-width: 760px;
+    margin: 48px auto 0;
+    background: var(--cream-warm);
+    border-left: 1px solid var(--navy-soft);
+    padding: 28px 32px;
+  }
+  .practical-note .label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .practical-note p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ---------- Location section ---------- */
+  .location-bg {
+    background: var(--cream-warm);
+    padding: 100px 24px;
+  }
+  .location-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .location-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin: 28px 0 8px;
+  }
+  .location-content p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .location-illustration {
+    text-align: center;
+  }
+  .address-block {
+    border-left: 1px solid var(--navy-soft);
+    padding-left: 24px;
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+  .address-block .label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ---------- House rules ---------- */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .rule {
+    text-align: center;
+    padding: 32px 20px;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .rule-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 18px;
+    color: var(--navy);
+  }
+  .rule h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .rule p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ---------- Contact section ---------- */
+  .contact-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 620px;
+    margin: 56px auto 0;
+  }
+  .contact-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 38px 28px;
+    background: var(--cream);
+    border: 1px solid var(--line-soft);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s ease;
+  }
+  .contact-option:hover {
+    border-color: var(--navy-soft);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(31, 69, 103, 0.15);
+  }
+  .contact-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--navy);
+    margin-bottom: 18px;
+  }
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .contact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--navy);
+    line-height: 1.3;
+    word-break: break-word;
+  }
+  @media (max-width: 540px) {
+    .contact-options { grid-template-columns: 1fr; max-width: 360px; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 80px 24px 60px;
+    text-align: center;
+  }
+  footer .footer-script {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: #e8d9b8;
+    letter-spacing: 0.01em;
+  }
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 32px;
+  }
+  footer .heart-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  footer .heart-divider .line {
+    width: 60px;
+    height: 1px;
+    background: rgba(232, 217, 184, 0.4);
+  }
+  footer .signature {
+    font-family: 'Allura', cursive;
+    font-size: 1.6rem;
+    color: #e8d9b8;
+    margin-top: 12px;
+  }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .location-grid { grid-template-columns: 1fr; gap: 40px; }
+    .section-nav ul { gap: 18px; font-size: 0.65rem; }
+    section.content { padding: 70px 20px; }
+    .location-bg { padding: 70px 20px; }
+    .about-strip { padding: 50px 20px; }
+    .lang-switcher { top: 16px; right: 16px; padding: 8px 14px; font-size: 0.65rem; gap: 10px; }
+  }
+
+  /* Hidden language content */
+  [data-lang]:not(.active-lang) { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Language switcher -->
+<div class="lang-switcher">
+  <button class="active" data-lang-btn="en">EN</button>
+  <button data-lang-btn="it">IT</button>
+  <button data-lang-btn="de">DE</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow" data-lang="en">A Private Guide for Our Guests</div>
+  <div class="hero-eyebrow" data-lang="it">Una Guida Privata per i Nostri Ospiti</div>
+  <div class="hero-eyebrow" data-lang="de">Ein Privater Reiseführer für Unsere Gäste</div>
+
+  <h1 class="hero-title">Lake View Pines</h1>
+
+  <div class="hero-divider">
+    <span class="line"></span>
+    <!-- Small rowing boat ornament -->
+    <svg class="ornament" width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="0.9">
+      <path d="M 2 8 Q 16 14, 30 8 L 27 4 L 5 4 Z" fill="#fdfcf8"/>
+      <line x1="16" y1="4" x2="16" y2="0"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <p class="hero-subtitle" data-lang="en">Welcome to my little corner of Lake Como — here you'll find everything I love most about this place, and what can guide your stay.</p>
+  <p class="hero-subtitle" data-lang="it">Benvenuti nel mio angolo del Lago di Como — qui troverete tutto quello che amo di più di questo posto, e ciò che può guidare il vostro soggiorno.</p>
+  <p class="hero-subtitle" data-lang="de">Willkommen in meinem kleinen Winkel am Comer See — hier findet ihr alles, was ich an diesem Ort am meisten liebe, und was euch durch euren Aufenthalt führen kann.</p>
+
+  <!-- Varenna-style village illustration with church + cypress trees -->
+  <svg class="hero-illustration" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4a7299" stroke-width="0.8">
+    <!-- Distant mountains -->
+    <path d="M0 105 Q 80 60, 160 85 T 320 80 T 480 90 T 640 80" stroke-width="0.5" opacity="0.45"/>
+    <path d="M0 120 L 70 90 L 130 110 L 200 80 L 280 105 L 360 85 L 440 100 L 520 88 L 600 105 L 640 100" stroke-width="0.6" opacity="0.6"/>
+
+    <!-- Cypress trees - left cluster (very Italian) -->
+    <g stroke-width="0.7">
+      <ellipse cx="48" cy="115" rx="5" ry="20" fill="#fdfcf8"/>
+      <ellipse cx="60" cy="118" rx="4" ry="17" fill="#fdfcf8"/>
+      <ellipse cx="72" cy="116" rx="5" ry="19" fill="#fdfcf8"/>
+    </g>
+    <!-- Other softer trees -->
+    <g opacity="0.7">
+      <circle cx="92" cy="125" r="9" fill="#fdfcf8"/>
+      <circle cx="104" cy="122" r="7" fill="#fdfcf8"/>
+    </g>
+
+    <!-- Varenna-style waterfront houses (taller, narrow, varied heights) -->
+    <g stroke-width="0.85">
+      <!-- House 1 (tall, 4 windows) -->
+      <rect x="125" y="85" width="22" height="55" fill="#fdfcf8"/>
+      <polyline points="123,85 136,76 149,85"/>
+      <line x1="125" y1="100" x2="147" y2="100" stroke-width="0.4"/>
+      <line x1="125" y1="115" x2="147" y2="115" stroke-width="0.4"/>
+      <rect x="130" y="92" width="3" height="5"/>
+      <rect x="139" y="92" width="3" height="5"/>
+      <rect x="130" y="106" width="3" height="5"/>
+      <rect x="139" y="106" width="3" height="5"/>
+      <rect x="130" y="121" width="3" height="5"/>
+      <rect x="139" y="121" width="3" height="5"/>
+
+      <!-- House 2 (narrow, 3 floors) -->
+      <rect x="147" y="92" width="16" height="48" fill="#fdfcf8"/>
+      <polyline points="145,92 155,84 165,92"/>
+      <rect x="151" y="98" width="3" height="5"/>
+      <rect x="156" y="98" width="3" height="5"/>
+      <rect x="151" y="112" width="3" height="5"/>
+      <rect x="156" y="112" width="3" height="5"/>
+
+      <!-- House 3 (wider with balcony) -->
+      <rect x="163" y="80" width="30" height="60" fill="#fdfcf8"/>
+      <polyline points="161,80 178,68 195,80"/>
+      <rect x="168" y="88" width="4" height="6"/>
+      <rect x="178" y="88" width="4" height="6"/>
+      <rect x="186" y="88" width="4" height="6"/>
+      <rect x="168" y="102" width="4" height="6"/>
+      <rect x="178" y="102" width="4" height="6"/>
+      <rect x="186" y="102" width="4" height="6"/>
+      <rect x="168" y="118" width="4" height="6"/>
+      <rect x="178" y="118" width="4" height="6"/>
+      <rect x="186" y="118" width="4" height="6"/>
+      <line x1="167" y1="111" x2="191" y2="111" stroke-width="0.35"/>
+
+      <!-- House 4 -->
+      <rect x="193" y="95" width="18" height="45" fill="#fdfcf8"/>
+      <polyline points="191,95 202,87 213,95"/>
+      <rect x="197" y="102" width="3" height="5"/>
+      <rect x="204" y="102" width="3" height="5"/>
+      <rect x="197" y="115" width="3" height="5"/>
+      <rect x="204" y="115" width="3" height="5"/>
+
+      <!-- House 5 (taller) -->
+      <rect x="211" y="78" width="26" height="62" fill="#fdfcf8"/>
+      <polyline points="209,78 224,67 239,78"/>
+      <rect x="216" y="85" width="3" height="5"/>
+      <rect x="223" y="85" width="3" height="5"/>
+      <rect x="230" y="85" width="3" height="5"/>
+      <rect x="216" y="98" width="3" height="5"/>
+      <rect x="223" y="98" width="3" height="5"/>
+      <rect x="230" y="98" width="3" height="5"/>
+      <rect x="216" y="112" width="3" height="5"/>
+      <rect x="223" y="112" width="3" height="5"/>
+      <rect x="230" y="112" width="3" height="5"/>
+      <rect x="222" y="125" width="4" height="15" fill="#fdfcf8"/>
+    </g>
+
+    <!-- ITALIAN CHURCH with bell tower (centerpiece) -->
+    <g stroke-width="0.9">
+      <!-- Church body -->
+      <rect x="248" y="88" width="42" height="52" fill="#fdfcf8"/>
+      <!-- Pitched roof -->
+      <polyline points="246,88 269,72 292,88"/>
+      <!-- Round arched windows -->
+      <path d="M 256 110 Q 256 102, 261 102 Q 266 102, 266 110 L 266 118 L 256 118 Z" fill="#fdfcf8"/>
+      <path d="M 272 110 Q 272 102, 277 102 Q 282 102, 282 110 L 282 118 L 272 118 Z" fill="#fdfcf8"/>
+      <!-- Round rose window -->
+      <circle cx="269" cy="95" r="3" fill="none"/>
+      <!-- Arched door -->
+      <path d="M 264 140 L 264 130 Q 264 124, 269 124 Q 274 124, 274 130 L 274 140 Z" fill="#fdfcf8"/>
+
+      <!-- Bell tower (campanile) -->
+      <rect x="294" y="55" width="16" height="85" fill="#fdfcf8"/>
+      <!-- Bell openings (arched) -->
+      <path d="M 297 75 Q 297 70, 300 70 Q 303 70, 303 75 L 303 80 L 297 80 Z" fill="none"/>
+      <path d="M 305 75 L 305 70 Q 305 70, 308 70 L 308 75 L 308 80 L 305 80 Z" fill="none"/>
+      <!-- Cornices -->
+      <line x1="293" y1="85" x2="311" y2="85" stroke-width="0.5"/>
+      <line x1="293" y1="65" x2="311" y2="65" stroke-width="0.5"/>
+      <!-- Pyramid spire -->
+      <polyline points="293,55 302,42 311,55"/>
+      <!-- Cross on top -->
+      <line x1="302" y1="42" x2="302" y2="34"/>
+      <line x1="299" y1="37" x2="305" y2="37"/>
+    </g>
+
+    <!-- More Varenna houses to the right of church -->
+    <g stroke-width="0.85">
+      <rect x="312" y="92" width="20" height="48" fill="#fdfcf8"/>
+      <polyline points="310,92 322,84 334,92"/>
+      <rect x="316" y="100" width="3" height="5"/>
+      <rect x="324" y="100" width="3" height="5"/>
+      <rect x="316" y="114" width="3" height="5"/>
+      <rect x="324" y="114" width="3" height="5"/>
+      <rect x="316" y="128" width="3" height="5"/>
+      <rect x="324" y="128" width="3" height="5"/>
+
+      <rect x="332" y="83" width="28" height="57" fill="#fdfcf8"/>
+      <polyline points="330,83 346,72 362,83"/>
+      <rect x="338" y="90" width="3" height="5"/>
+      <rect x="346" y="90" width="3" height="5"/>
+      <rect x="354" y="90" width="3" height="5"/>
+      <rect x="338" y="104" width="3" height="5"/>
+      <rect x="346" y="104" width="3" height="5"/>
+      <rect x="354" y="104" width="3" height="5"/>
+      <rect x="338" y="118" width="3" height="5"/>
+      <rect x="346" y="118" width="3" height="5"/>
+      <rect x="354" y="118" width="3" height="5"/>
+
+      <rect x="362" y="98" width="18" height="42" fill="#fdfcf8"/>
+      <polyline points="360,98 371,90 382,98"/>
+      <rect x="366" y="105" width="3" height="5"/>
+      <rect x="373" y="105" width="3" height="5"/>
+      <rect x="366" y="118" width="3" height="5"/>
+      <rect x="373" y="118" width="3" height="5"/>
+
+      <rect x="380" y="88" width="22" height="52" fill="#fdfcf8"/>
+      <polyline points="378,88 391,79 404,88"/>
+      <rect x="385" y="95" width="3" height="5"/>
+      <rect x="394" y="95" width="3" height="5"/>
+      <rect x="385" y="108" width="3" height="5"/>
+      <rect x="394" y="108" width="3" height="5"/>
+      <rect x="385" y="122" width="3" height="5"/>
+      <rect x="394" y="122" width="3" height="5"/>
+
+      <rect x="402" y="100" width="16" height="40" fill="#fdfcf8"/>
+      <polyline points="400,100 410,93 420,100"/>
+      <rect x="406" y="107" width="3" height="5"/>
+      <rect x="411" y="107" width="3" height="5"/>
+      <rect x="406" y="120" width="3" height="5"/>
+      <rect x="411" y="120" width="3" height="5"/>
+    </g>
+
+    <!-- Cypress cluster right -->
+    <g stroke-width="0.7">
+      <ellipse cx="430" cy="118" rx="5" ry="20" fill="#fdfcf8"/>
+      <ellipse cx="442" cy="120" rx="4" ry="17" fill="#fdfcf8"/>
+      <ellipse cx="454" cy="118" rx="5" ry="19" fill="#fdfcf8"/>
+    </g>
+    <g opacity="0.7">
+      <circle cx="475" cy="128" r="9" fill="#fdfcf8"/>
+      <circle cx="487" cy="125" r="7" fill="#fdfcf8"/>
+    </g>
+
+    <!-- Distant town silhouette (further right) -->
+    <g opacity="0.5" stroke-width="0.5">
+      <rect x="510" y="120" width="8" height="20" fill="#fdfcf8"/>
+      <rect x="520" y="115" width="10" height="25" fill="#fdfcf8"/>
+      <rect x="532" y="118" width="7" height="22" fill="#fdfcf8"/>
+      <rect x="541" y="113" width="12" height="27" fill="#fdfcf8"/>
+      <rect x="555" y="118" width="9" height="22" fill="#fdfcf8"/>
+      <rect x="566" y="116" width="10" height="24" fill="#fdfcf8"/>
+      <polyline points="508,120 514,114 520,120"/>
+      <polyline points="518,115 525,108 532,115"/>
+      <polyline points="539,113 547,105 555,113"/>
+      <polyline points="564,116 571,110 578,116"/>
+    </g>
+
+    <!-- Lake water line -->
+    <line x1="0" y1="148" x2="640" y2="148" stroke-width="0.4" opacity="0.5"/>
+
+    <!-- Reflections -->
+    <g opacity="0.25">
+      <rect x="125" y="148" width="22" height="14" fill="none" stroke-width="0.4"/>
+      <rect x="163" y="148" width="30" height="18" fill="none" stroke-width="0.4"/>
+      <rect x="211" y="148" width="26" height="20" fill="none" stroke-width="0.4"/>
+      <rect x="248" y="148" width="42" height="14" fill="none" stroke-width="0.4"/>
+      <rect x="294" y="148" width="16" height="28" fill="none" stroke-width="0.4"/>
+      <rect x="332" y="148" width="28" height="18" fill="none" stroke-width="0.4"/>
+      <rect x="380" y="148" width="22" height="16" fill="none" stroke-width="0.4"/>
+    </g>
+
+    <!-- Wave lines -->
+    <line x1="20" y1="160" x2="100" y2="160" stroke-width="0.3" opacity="0.4"/>
+    <line x1="120" y1="172" x2="200" y2="172" stroke-width="0.3" opacity="0.35"/>
+    <line x1="220" y1="180" x2="320" y2="180" stroke-width="0.3" opacity="0.35"/>
+    <line x1="350" y1="172" x2="430" y2="172" stroke-width="0.3" opacity="0.35"/>
+    <line x1="450" y1="180" x2="540" y2="180" stroke-width="0.3" opacity="0.35"/>
+    <line x1="560" y1="170" x2="630" y2="170" stroke-width="0.3" opacity="0.35"/>
+    <line x1="40" y1="190" x2="160" y2="190" stroke-width="0.3" opacity="0.3"/>
+    <line x1="200" y1="195" x2="340" y2="195" stroke-width="0.3" opacity="0.3"/>
+    <line x1="380" y1="192" x2="500" y2="192" stroke-width="0.3" opacity="0.3"/>
+    <line x1="520" y1="200" x2="610" y2="200" stroke-width="0.3" opacity="0.3"/>
+
+    <!-- Small rowing boat on the water -->
+    <g stroke-width="0.9">
+      <path d="M 478 178 Q 498 188, 524 178 L 519 173 L 483 173 Z" fill="#fdfcf8"/>
+      <line x1="501" y1="173" x2="501" y2="160"/>
+      <line x1="495" y1="176" x2="487" y2="184"/>
+      <line x1="507" y1="176" x2="515" y2="184"/>
+    </g>
+  </svg>
+
+  <div class="scroll-hint" data-lang="en">Scroll to discover</div>
+  <div class="scroll-hint" data-lang="it">Scorri per scoprire</div>
+  <div class="scroll-hint" data-lang="de">Nach unten scrollen</div>
+</section>
+
+<!-- ABOUT ME -->
+<div class="about-strip">
+  <div class="about-strip-inner">
+    <div class="small-eyebrow" data-lang="en">Your Host</div>
+    <div class="small-eyebrow" data-lang="it">La Vostra Ospite</div>
+    <div class="small-eyebrow" data-lang="de">Eure Gastgeberin</div>
+
+    <div class="script">Chiara</div>
+
+    <p data-lang="en">I was born and raised in Lecco, about 20 minutes from Varenna. These days I live abroad, but I find myself coming back home as often as I can — for the beauty, the slowness, and that particular kind of calm only the lake gives you.</p>
+    <p data-lang="it">Sono nata e cresciuta a Lecco, a circa 20 minuti da Varenna. Oggi vivo all'estero, ma torno a casa il più spesso possibile — per la bellezza, la lentezza, e quella calma particolare che solo il lago sa regalare.</p>
+    <p data-lang="de">Ich bin in Lecco geboren und aufgewachsen, etwa 20 Minuten von Varenna entfernt. Heute lebe ich im Ausland, kehre aber so oft wie möglich nach Hause zurück — für die Schönheit, die Langsamkeit und diese besondere Ruhe, die nur der See schenkt.</p>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="section-nav">
+  <ul>
+    <li><a href="#location" data-lang="en">Location</a><a href="#location" data-lang="it">Posizione</a><a href="#location" data-lang="de">Lage</a></li>
+    <li><a href="#transport" data-lang="en">Getting Around</a><a href="#transport" data-lang="it">Spostarsi</a><a href="#transport" data-lang="de">Mobilität</a></li>
+    <li><a href="#explore" data-lang="en">To Explore</a><a href="#explore" data-lang="it">Da Esplorare</a><a href="#explore" data-lang="de">Zu Entdecken</a></li>
+    <li><a href="#dine" data-lang="en">To Dine</a><a href="#dine" data-lang="it">Dove Mangiare</a><a href="#dine" data-lang="de">Restaurants</a></li>
+    <li><a href="#house" data-lang="en">House Info</a><a href="#house" data-lang="it">La Casa</a><a href="#house" data-lang="de">Haus-Info</a></li>
+    <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="it">Contatti</a><a href="#contact" data-lang="de">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- LOCATION -->
+<div id="location" class="location-bg">
+  <div class="location-grid reveal">
+    <div class="location-content">
+      <div class="section-eyebrow" data-lang="en">Where We Are</div>
+      <div class="section-eyebrow" data-lang="it">Dove Siamo</div>
+      <div class="section-eyebrow" data-lang="de">Wo Wir Sind</div>
+
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--navy); line-height: 1.1; font-weight: 400; margin-bottom: 24px; letter-spacing: 0.005em;">
+        <span data-lang="en">A Lakeside Retreat</span>
+        <span data-lang="it">Un Rifugio sul Lago</span>
+        <span data-lang="de">Ein Refugium am See</span>
+      </h2>
+
+      <p data-lang="en">The house sits on the eastern shore of Lake Como, in <em><strong>Fiumelatte</strong></em> — just minutes from the little jewel of <em><strong>Varenna</strong></em>. Tucked between the lake and the mountains, it's the kind of place where time slows down on its own.</p>
+      <p data-lang="it">La casa si trova sulla sponda orientale del Lago di Como, a <em><strong>Fiumelatte</strong></em> — a pochi minuti dal piccolo gioiello di <em><strong>Varenna</strong></em>. Incastonata tra il lago e le montagne, è uno di quei posti dove il tempo rallenta da solo.</p>
+      <p data-lang="de">Das Haus liegt am Ostufer des Comer Sees, in <em><strong>Fiumelatte</strong></em> — nur wenige Minuten vom kleinen Juwel <em><strong>Varenna</strong></em> entfernt. Eingebettet zwischen See und Bergen — ein Ort, an dem die Zeit von selbst langsamer wird.</p>
+
+      <p data-lang="en">The drive in is one of the best parts of the trip: narrow lakeside roads, sleepy villages, that unmistakable Italian feel, and views that appear out of nowhere around every bend.</p>
+      <p data-lang="it">L'arrivo in auto è una delle parti più belle del viaggio: strade strette sul lago, paesini tranquilli, quell'inconfondibile aria italiana, e panorami che spuntano all'improvviso ad ogni curva.</p>
+      <p data-lang="de">Schon die Anfahrt ist eines der schönsten Erlebnisse: schmale Seestraßen, verschlafene Dörfer, dieses unverwechselbare italienische Flair und Ausblicke, die hinter jeder Kurve aus dem Nichts auftauchen.</p>
+
+      <div class="address-block">
+        <span class="label" data-lang="en">The address</span>
+        <span class="label" data-lang="it">L'indirizzo</span>
+        <span class="label" data-lang="de">Die Adresse</span>
+        Strada dei Boschi<br>Fiumelatte (LC)
+      </div>
+    </div>
+
+    <div class="location-illustration">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1f4567" stroke-width="0.7">
+        <!-- Mountain range backdrop -->
+        <path d="M0 100 L 50 50 L 100 80 L 160 30 L 220 65 L 280 40 L 340 70 L 400 50 L 400 110 Z" stroke-width="0.6" fill="#f7f3ea" opacity="0.5"/>
+        <path d="M0 100 L 50 50 L 100 80 L 160 30 L 220 65 L 280 40 L 340 70 L 400 50"/>
+        <path d="M50 90 L 100 60 L 150 75 L 200 55 L 250 75 L 300 60 L 350 80" stroke-width="0.4" opacity="0.5"/>
+
+        <!-- Lake Como - inverted Y shape (north on top, splits at Bellagio into Como SW & Lecco SE) -->
+        <path d="M 175 100
+                 L 167 195
+                 Q 162 220, 130 260
+                 Q 95 305, 60 360
+                 L 50 385
+                 L 80 388
+                 Q 115 360, 155 320
+                 L 198 265
+                 L 245 320
+                 Q 280 360, 315 388
+                 L 350 385
+                 L 340 360
+                 Q 310 305, 270 260
+                 Q 232 220, 228 195
+                 L 222 100 Z"
+              fill="#e8eef5" opacity="0.45" stroke-width="0.7"/>
+
+        <!-- Compass rose -->
+        <g transform="translate(345, 75)" stroke-width="0.7">
+          <circle r="22" fill="#fdfcf8"/>
+          <path d="M0 -18 L 4 0 L 0 18 L -4 0 Z" fill="#1f4567"/>
+          <path d="M-18 0 L 0 -4 L 18 0 L 0 4 Z" fill="none"/>
+          <text y="-25" text-anchor="middle" font-family="Cormorant Garamond" font-size="10" fill="#1f4567" stroke="none" font-style="italic">N</text>
+        </g>
+
+        <!-- Varenna marker (east shore, just north of Lake View Pines) -->
+        <g transform="translate(232, 138)" stroke-width="0.6">
+          <rect x="-2" y="0" width="4" height="6" fill="#fdfcf8"/>
+          <rect x="3" y="-3" width="5" height="9" fill="#fdfcf8"/>
+          <rect x="9" y="0" width="4" height="6" fill="#fdfcf8"/>
+          <text x="20" y="6" font-family="Cormorant Garamond" font-size="9" fill="#5a5a5a" stroke="none" font-style="italic">Varenna</text>
+        </g>
+
+        <!-- Lake View Pines pin (east shore, in Fiumelatte) -->
+        <g transform="translate(235, 170)">
+          <circle r="3.5" fill="#1f4567"/>
+          <circle r="9" fill="none" stroke-width="0.6"/>
+          <circle r="15" fill="none" stroke-width="0.4" opacity="0.5"/>
+          <text x="20" y="-3" font-family="Cormorant Garamond" font-style="italic" font-size="13" fill="#1f4567" stroke="none" letter-spacing="0.5">Lake View Pines</text>
+          <text x="20" y="11" font-family="Cormorant Garamond" font-size="9" font-style="italic" fill="#5a5a5a" stroke="none">Fiumelatte</text>
+        </g>
+
+        <!-- Menaggio marker (west shore, opposite Varenna) -->
+        <g transform="translate(158, 138)" stroke-width="0.6" opacity="0.85">
+          <rect x="-9" y="0" width="4" height="6" fill="#fdfcf8"/>
+          <rect x="-4" y="-3" width="5" height="9" fill="#fdfcf8"/>
+          <rect x="2" y="0" width="4" height="6" fill="#fdfcf8"/>
+          <text x="-13" y="6" text-anchor="end" font-family="Cormorant Garamond" font-size="9" fill="#5a5a5a" stroke="none" font-style="italic">Menaggio</text>
+        </g>
+
+        <!-- Bellagio marker (on the central peninsula, between the two southern arms) -->
+        <g transform="translate(193, 297)" stroke-width="0.6" opacity="0.85">
+          <rect x="-2" y="-3" width="4" height="6" fill="#fdfcf8"/>
+          <rect x="3" y="-6" width="5" height="9" fill="#fdfcf8"/>
+          <rect x="9" y="-3" width="4" height="6" fill="#fdfcf8"/>
+          <text x="5" y="14" text-anchor="middle" font-family="Cormorant Garamond" font-size="9" fill="#5a5a5a" stroke="none" font-style="italic">Bellagio</text>
+        </g>
+
+        <!-- Lecco marker (SE tip of eastern arm — Chiara's hometown) -->
+        <g transform="translate(323, 392)" stroke-width="0.6">
+          <rect x="-3" y="-2" width="5" height="8" fill="#fdfcf8"/>
+          <rect x="3" y="-5" width="6" height="11" fill="#fdfcf8"/>
+          <rect x="10" y="-2" width="4" height="8" fill="#fdfcf8"/>
+          <rect x="15" y="-3" width="5" height="9" fill="#fdfcf8"/>
+          <text x="10" y="17" text-anchor="middle" font-family="Cormorant Garamond" font-size="10" fill="#1f4567" stroke="none" font-style="italic" font-weight="500">Lecco</text>
+        </g>
+
+        <!-- Como marker (SW tip of western arm) -->
+        <g transform="translate(63, 392)" stroke-width="0.6" opacity="0.85">
+          <rect x="-3" y="-2" width="5" height="8" fill="#fdfcf8"/>
+          <rect x="3" y="-5" width="6" height="11" fill="#fdfcf8"/>
+          <rect x="10" y="-2" width="4" height="8" fill="#fdfcf8"/>
+          <text x="6" y="17" text-anchor="middle" font-family="Cormorant Garamond" font-size="9" fill="#5a5a5a" stroke="none" font-style="italic">Como</text>
+        </g>
+
+        <!-- Tiny boat in the upper channel -->
+        <g transform="translate(195, 225)" stroke-width="0.6">
+          <path d="M-5 0 Q 0 4, 5 0 L 4 -2 L -4 -2 Z" fill="#fdfcf8"/>
+          <line x1="0" y1="-2" x2="0" y2="-7"/>
+        </g>
+
+        <!-- Wave lines in upper channel -->
+        <line x1="180" y1="155" x2="218" y2="155" stroke-width="0.3" opacity="0.3"/>
+        <line x1="178" y1="190" x2="220" y2="190" stroke-width="0.3" opacity="0.3"/>
+
+        <!-- Wave lines in western arm -->
+        <line x1="95" y1="340" x2="135" y2="340" stroke-width="0.3" opacity="0.35"/>
+        <line x1="78" y1="370" x2="115" y2="370" stroke-width="0.3" opacity="0.3"/>
+
+        <!-- Wave lines in eastern arm -->
+        <line x1="265" y1="340" x2="305" y2="340" stroke-width="0.3" opacity="0.35"/>
+        <line x1="285" y1="370" x2="322" y2="370" stroke-width="0.3" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- GETTING AROUND -->
+<section id="transport" class="content reveal">
+  <div class="section-header">
+    <div class="section-eyebrow" data-lang="en">Getting Around Without a Car</div>
+    <div class="section-eyebrow" data-lang="it">Spostarsi Senza Auto</div>
+    <div class="section-eyebrow" data-lang="de">Unterwegs Ohne Auto</div>
+
+    <h2 class="section-title">
+      <span data-lang="en">Around the Lake</span>
+      <span data-lang="it">In Giro per il Lago</span>
+      <span data-lang="de">Rund um den See</span>
+    </h2>
+
+    <p class="section-intro" data-lang="en">The car is of course the most comfortable way to get around — but you can absolutely manage without one. Trains and ferries connect the whole lake. In high season things get busier, so it's worth planning a little ahead, and reserving a taxi in advance is always a good idea.</p>
+    <p class="section-intro" data-lang="it">L'auto è naturalmente il modo più comodo per spostarsi — ma si può tranquillamente fare a meno. Treni e traghetti collegano tutto il lago. In alta stagione c'è più movimento, quindi conviene organizzarsi un po' in anticipo, e prenotare un taxi in anticipo è sempre una buona idea.</p>
+    <p class="section-intro" data-lang="de">Das Auto ist natürlich die bequemste Art, sich fortzubewegen — aber es geht auch gut ohne. Züge und Fähren verbinden den ganzen See. In der Hochsaison wird es voller, daher lohnt es sich, etwas vorauszuplanen, und ein Taxi im Voraus zu reservieren ist immer eine gute Idee.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-number">— 01</div>
+      <h3 data-lang="en">By Train</h3>
+      <h3 data-lang="it">In Treno</h3>
+      <h3 data-lang="de">Mit dem Zug</h3>
+      <div class="meta" data-lang="en">Varenna-Esino-Perledo station</div>
+      <div class="meta" data-lang="it">Stazione di Varenna-Esino-Perledo</div>
+      <div class="meta" data-lang="de">Bahnhof Varenna-Esino-Perledo</div>
+      <p data-lang="en">The fastest way along the eastern shore and to and from Milan. Milan Centrale to Varenna (Varenna-Esino-Perledo) is roughly an hour with direct trains all day; from Lecco it's about 20 minutes. The station sits above the lake, about a 30–40 minute walk to the holiday house. There's also a smaller station at Fiumelatte, a little closer to the house — though from Milan you'd change at Lecco.</p>
+      <p data-lang="it">Il modo più veloce lungo la sponda orientale e da/per Milano. Da Milano Centrale a Varenna (Varenna-Esino-Perledo) circa un'ora, con treni diretti tutto il giorno; da Lecco circa 20 minuti. La stazione è sopra il lago, a circa 30–40 minuti a piedi dalla casa. C'è anche una stazione più piccola a Fiumelatte, un po' più vicina alla casa — anche se da Milano bisogna cambiare a Lecco.</p>
+      <p data-lang="de">Der schnellste Weg entlang des Ostufers und von/nach Mailand. Von Mailand Centrale nach Varenna (Varenna-Esino-Perledo) etwa eine Stunde, mit Direktzügen den ganzen Tag; von Lecco rund 20 Minuten. Der Bahnhof liegt oberhalb des Sees, etwa 30–40 Gehminuten vom Ferienhaus entfernt. Es gibt auch einen kleineren Bahnhof in Fiumelatte, etwas näher am Haus — von Mailand aus muss man jedoch in Lecco umsteigen.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 02</div>
+      <h3 data-lang="en">Taxis & Transfers</h3>
+      <h3 data-lang="it">Taxi e Transfer</h3>
+      <h3 data-lang="de">Taxis & Transfer</h3>
+      <div class="meta" data-lang="en">Best booked a little ahead</div>
+      <div class="meta" data-lang="it">Meglio prenotare in anticipo</div>
+      <div class="meta" data-lang="de">Am besten vorab buchen</div>
+      <p data-lang="en">Handy for luggage, late arrivals, or the climb up to the house. A few reliable local drivers:</p>
+      <p data-lang="it">Comodi per i bagagli, gli arrivi in tarda ora, o la salita fino alla casa. Alcuni autisti locali di fiducia:</p>
+      <p data-lang="de">Praktisch für Gepäck, späte Ankünfte oder den Anstieg hinauf zum Haus. Einige verlässliche Fahrer vor Ort:</p>
+      <div class="contact-list">
+        <div class="contact-row"><span class="contact-name">Taxi Andrea</span><a class="contact-tel" href="tel:+393770959389">+39 377 095 9389</a></div>
+        <div class="contact-row"><span class="contact-name">Taxi Lorenza</span><a class="contact-tel" href="tel:+393384441084">+39 338 444 1084</a></div>
+        <div class="contact-row"><span class="contact-name">Taxi Rita</span><a class="contact-tel" href="tel:+393388554687">+39 338 855 4687</a></div>
+        <div class="contact-row"><span class="contact-name">NCC A Tuttogas</span><a class="contact-tel" href="tel:+393282179171">+39 328 217 9171</a></div>
+      </div>
+      <p class="contact-note" data-lang="en"><em>A Tuttogas</em> is a private car/van transfer — book a few days ahead, available 8am–8pm. Roughly €25 for up to 4, €35 for up to 6 (night fares a little higher).</p>
+      <p class="contact-note" data-lang="it"><em>A Tuttogas</em> è un transfer privato auto/van — prenotate qualche giorno prima, disponibile dalle 8 alle 20. Circa €25 fino a 4 persone, €35 fino a 6 (tariffe notturne un po' più alte).</p>
+      <p class="contact-note" data-lang="de"><em>A Tuttogas</em> ist ein privater Auto-/Van-Transfer — ein paar Tage vorher buchen, verfügbar von 8 bis 20 Uhr. Etwa €25 für bis zu 4 Personen, €35 für bis zu 6 (Nachttarife etwas höher).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 03</div>
+      <h3 data-lang="en">Walking from the Station</h3>
+      <h3 data-lang="it">A Piedi dalla Stazione</h3>
+      <h3 data-lang="de">Zu Fuß vom Bahnhof</h3>
+      <div class="meta" data-lang="en">Possible — but steep with luggage</div>
+      <div class="meta" data-lang="it">Possibile — ma in salita con i bagagli</div>
+      <div class="meta" data-lang="de">Möglich — aber steil mit Gepäck</div>
+      <p data-lang="en">It is possible to walk from the train station to the house, but it is a long walk — roughly 30–40 minutes from the Varenna station, and the final stretch up to the apartment is steep and uphill. The Fiumelatte station is closer to the village but the climb to the house is the same. With luggage or after a long travel day, I'd really recommend a taxi for that uphill last bit rather than walking.</p>
+      <p data-lang="it">È possibile salire a piedi dalla stazione fino alla casa, ma è una bella camminata — circa 30–40 minuti dalla stazione di Varenna, e l'ultimo tratto fino all'appartamento è ripido e in salita. La stazione di Fiumelatte è più vicina al paese, ma la salita fino alla casa è la stessa. Con i bagagli o dopo un lungo viaggio, consiglio davvero un taxi per l'ultima parte in salita invece di camminare.</p>
+      <p data-lang="de">Man kann vom Bahnhof zu Fuß zum Haus gehen, aber es ist ein langer Weg — etwa 30–40 Minuten vom Bahnhof Varenna, und das letzte Stück hinauf zur Wohnung ist steil und bergauf. Der Bahnhof Fiumelatte liegt näher am Dorf, der Anstieg zum Haus ist aber derselbe. Mit Gepäck oder nach einem langen Reisetag empfehle ich für das letzte Stück bergauf wirklich ein Taxi statt zu laufen.</p>
+    </div>
+  </div>
+
+  <div class="practical-note">
+    <span class="label" data-lang="en">A few practical tips</span>
+    <span class="label" data-lang="it">Qualche consiglio pratico</span>
+    <span class="label" data-lang="de">Ein paar praktische Tipps</span>
+    <p data-lang="en">Download the <em>Trenord</em> and <em>Navigazione Laghi</em> apps for live times. In peak season trains and ferries get busy — travelling a little earlier or later helps you avoid the crush. And for the walk up to the house, reserve a taxi in advance. <em>Buon viaggio!</em></p>
+    <p data-lang="it">Scaricate le app <em>Trenord</em> e <em>Navigazione Laghi</em> per gli orari in tempo reale. In alta stagione treni e traghetti si riempiono — viaggiare un po' prima o un po' dopo aiuta a evitare la calca. E per la salita fino alla casa, prenotate un taxi in anticipo. <em>Buon viaggio!</em></p>
+    <p data-lang="de">Ladet euch die Apps <em>Trenord</em> und <em>Navigazione Laghi</em> für Echtzeit-Fahrpläne herunter. In der Hochsaison sind Züge und Fähren voll — etwas früher oder später zu reisen erspart das Gedränge. Und für den Weg hinauf zum Haus reserviert ein Taxi im Voraus. <em>Buon viaggio!</em></p>
+  </div>
+</section>
+
+<!-- TO EXPLORE -->
+<section id="explore" class="content reveal">
+  <div class="section-header">
+    <div class="section-eyebrow" data-lang="en">Things to Do Nearby</div>
+    <div class="section-eyebrow" data-lang="it">Da Fare nei Dintorni</div>
+    <div class="section-eyebrow" data-lang="de">In der Umgebung</div>
+
+    <h2 class="section-title">
+      <span data-lang="en">To Explore</span>
+      <span data-lang="it">Da Esplorare</span>
+      <span data-lang="de">Zu Entdecken</span>
+    </h2>
+
+    <p class="section-intro" data-lang="en">My favourite places — the ones I send everyone to. Take your time, the lake is best at slow speed.</p>
+    <p class="section-intro" data-lang="it">I miei posti preferiti — quelli che consiglio a tutti. Prendetevi il vostro tempo, il lago si gusta lentamente.</p>
+    <p class="section-intro" data-lang="de">Meine Lieblingsorte — die, die ich jedem empfehle. Lasst euch Zeit, der See genießt sich am besten in Ruhe.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-number">— 01</div>
+      <h3>Varenna</h3>
+      <div class="meta" data-lang="en">On foot from the house</div>
+      <div class="meta" data-lang="it">A piedi dalla casa</div>
+      <div class="meta" data-lang="de">Zu Fuß vom Haus</div>
+      <p data-lang="en">A pastel-coloured fishing village clinging to the shore — cobblestone alleys, the romantic <em>Passeggiata degli Innamorati</em>, Villa Monastero's gardens, and a pace that hasn't changed in a hundred years. You can walk there straight from the house along the lake.</p>
+      <p data-lang="it">Un borgo di pescatori dai colori pastello aggrappato alla riva — vicoli di ciottoli, la romantica <em>Passeggiata degli Innamorati</em>, i giardini di Villa Monastero, e un ritmo che non cambia da cent'anni. Si raggiunge a piedi dalla casa lungo il lago.</p>
+      <p data-lang="de">Ein pastellfarbenes Fischerdorf am Ufer — Kopfsteinpflastergassen, die romantische <em>Passeggiata degli Innamorati</em>, die Gärten der Villa Monastero und ein Rhythmus, der sich seit hundert Jahren nicht verändert hat. Vom Haus aus zu Fuß am See entlang erreichbar.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 02</div>
+      <h3>Lecco</h3>
+      <div class="meta" data-lang="en">By train · By car (20 min)</div>
+      <div class="meta" data-lang="it">In treno · In auto (20 min)</div>
+      <div class="meta" data-lang="de">Mit Zug · Mit Auto (20 Min)</div>
+      <p data-lang="en">The other main city of Lake Como — and my hometown. Where Como is the polished one, Lecco is the lived-in one: mountains rising straight out of the water, fewer tourists, real Italian life. The historic centre is small and walkable. Worth at least an afternoon.</p>
+      <p data-lang="it">L'altra città principale del Lago di Como — e la mia città natale. Se Como è quella più curata, Lecco è quella più vissuta: montagne che salgono direttamente dall'acqua, meno turisti, vita italiana vera. Il centro storico è piccolo e piacevole da girare a piedi. Vale almeno un pomeriggio.</p>
+      <p data-lang="de">Die andere Hauptstadt des Comer Sees — und meine Heimatstadt. Wenn Como die polierte ist, ist Lecco die gelebte: Berge, die direkt aus dem Wasser ragen, weniger Touristen, echtes italienisches Leben. Die Altstadt ist klein und gut zu Fuß erkundbar. Lohnt einen Nachmittag.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 03</div>
+      <h3>Bellagio</h3>
+      <div class="meta" data-lang="en">By ferry from Varenna</div>
+      <div class="meta" data-lang="it">In traghetto da Varenna</div>
+      <div class="meta" data-lang="de">Mit der Fähre ab Varenna</div>
+      <p data-lang="en">"The pearl of the lake," sitting right on the tip where the lake splits in two. Stone staircases, perfect gelato, and a view that has fooled many into staying forever. Take the ferry from Varenna — it's part of the experience.</p>
+      <p data-lang="it">"La perla del lago," proprio sulla punta dove il lago si divide in due. Scalinate di pietra, gelato perfetto e un panorama che ha fatto rimanere molti per sempre. Prendete il traghetto da Varenna — fa parte dell'esperienza.</p>
+      <p data-lang="de">„Die Perle des Sees", direkt an der Spitze, wo sich der See in zwei Arme teilt. Steintreppen, perfektes Gelato und eine Aussicht, die schon viele zum Bleiben verführt hat. Mit der Fähre ab Varenna — das gehört dazu.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 04</div>
+      <h3>Sentiero del Viandante</h3>
+      <div class="meta" data-lang="en">Walking trail · from Fiumelatte</div>
+      <div class="meta" data-lang="it">Sentiero · da Fiumelatte</div>
+      <div class="meta" data-lang="de">Wanderweg · ab Fiumelatte</div>
+      <p data-lang="en">An ancient pilgrim path that runs along the eastern shore — old mule tracks, stone chapels, terraced olive groves, and views that drop straight into the lake. You can pick it up right from the village and walk as much or as little as you like.</p>
+      <p data-lang="it">Un'antica via dei pellegrini che corre lungo la sponda orientale — mulattiere, cappelle di pietra, oliveti terrazzati e panorami a picco sul lago. Si imbocca direttamente dal paese e si cammina quanto si vuole.</p>
+      <p data-lang="de">Ein alter Pilgerpfad entlang des Ostufers — Maultierpfade, Steinkapellen, terrassierte Olivenhaine und Ausblicke, die direkt in den See fallen. Man steigt direkt im Dorf ein und geht so weit, wie man möchte.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 05</div>
+      <h3>Spiaggia Bianca di Lierna</h3>
+      <div class="meta" data-lang="en">Lierna · For swimming</div>
+      <div class="meta" data-lang="it">Lierna · Per fare il bagno</div>
+      <div class="meta" data-lang="de">Lierna · Zum Baden</div>
+      <p data-lang="en">A wide pebble beach with bright, almost-white stones — hence the name — and water clear enough to make you forget you're on a lake. Restaurants, pizzerias, and cafés all along the shore, so it's easy to make a day of it.</p>
+      <p data-lang="it">Una spiaggia ampia di ciottoli bianchissimi — da cui il nome — e acqua trasparente che vi farà dimenticare di essere su un lago. Tutto intorno, ristoranti, pizzerie e bar, quindi è facile passarci una giornata intera.</p>
+      <p data-lang="de">Ein breiter Kieselstrand mit hellen, fast weißen Steinen — daher der Name — und Wasser, klar genug, dass man vergisst, an einem See zu sein. Rundum Restaurants, Pizzerien und Cafés — perfekt für einen ganzen Tag.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 06</div>
+      <h3>Villa del Balbianello</h3>
+      <div class="meta" data-lang="en">By car or boat</div>
+      <div class="meta" data-lang="it">In auto o in barca</div>
+      <div class="meta" data-lang="de">Mit Auto oder Boot</div>
+      <p data-lang="en">A cinematic villa on a wooded promontory — yes, the one from Star Wars and 007. Book the interior tour ahead; the gardens alone are worth the trip.</p>
+      <p data-lang="it">Una villa cinematografica su un promontorio boscoso — sì, quella di Star Wars e 007. Prenotate il tour degli interni in anticipo; già i giardini valgono il viaggio.</p>
+      <p data-lang="de">Eine filmreife Villa auf einer bewaldeten Landzunge — ja, die aus Star Wars und 007. Innenführung vorbuchen, allein der Garten lohnt sich.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 07</div>
+      <h3>Boat Rental</h3>
+      <div class="meta" data-lang="en">No licence needed</div>
+      <div class="meta" data-lang="it">Senza patente</div>
+      <div class="meta" data-lang="de">Ohne Bootsführerschein</div>
+      <p data-lang="en">Rent a small boat for a few hours and find your own swimming spot. The lake from the water is a different lake entirely. There are a few places along the shore where you can hire one — just ask me and I'll point you to the closest.</p>
+      <p data-lang="it">Noleggiate una piccola barca per qualche ora e trovate il vostro angolo per fare il bagno. Il lago visto dall'acqua è un altro lago. Ci sono diversi posti lungo la riva dove noleggiarne una — basta chiedere e vi indico quello più vicino.</p>
+      <p data-lang="de">Mietet ein kleines Boot für ein paar Stunden und sucht euch eine eigene Badebucht. Der See vom Wasser aus ist ein ganz anderer See. Es gibt mehrere Stellen am Ufer zum Mieten — fragt mich einfach, ich nenne euch die nächstgelegene.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-number">— 08</div>
+      <h3>Villa Carlotta</h3>
+      <div class="meta" data-lang="en">Tremezzo · by car or ferry</div>
+      <div class="meta" data-lang="it">Tremezzo · in auto o traghetto</div>
+      <div class="meta" data-lang="de">Tremezzo · Auto oder Fähre</div>
+      <p data-lang="en">Botanical gardens with rhododendrons that explode in May, plus an art collection inside. Best in spring, but lovely any time.</p>
+      <p data-lang="it">Giardini botanici con rododendri che esplodono a maggio, e una collezione d'arte all'interno. Bellissimo in primavera, ma incantevole sempre.</p>
+      <p data-lang="de">Botanischer Garten mit Rhododendren, die im Mai explodieren, dazu eine Kunstsammlung im Haus. Am schönsten im Frühling, aber jederzeit ein Genuss.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<div style="background: var(--cream-warm); padding: 100px 0;">
+  <section id="dine" class="reveal" style="padding: 0 24px; max-width: 1100px; margin: 0 auto;">
+    <div class="section-header">
+      <div class="section-eyebrow" data-lang="en">Where to Eat & Drink</div>
+      <div class="section-eyebrow" data-lang="it">Dove Mangiare e Bere</div>
+      <div class="section-eyebrow" data-lang="de">Essen und Trinken</div>
+
+      <h2 class="section-title">
+        <span data-lang="en">À Table</span>
+        <span data-lang="it">A Tavola</span>
+        <span data-lang="de">Zu Tisch</span>
+      </h2>
+
+      <p class="section-intro" data-lang="en">From a quick aperitivo to a long lakeside dinner — the places where I keep going back.</p>
+      <p class="section-intro" data-lang="it">Dall'aperitivo veloce alla cena lunga sul lago — i posti dove torno sempre.</p>
+      <p class="section-intro" data-lang="de">Vom schnellen Aperitivo bis zum langen Abendessen am See — die Orte, an die ich immer zurückkehre.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-number">— 01</div>
+        <h3>Hosteria del Platano</h3>
+        <div class="meta" data-lang="en">Fiumelatte · A short walk from the house</div>
+        <div class="meta" data-lang="it">Fiumelatte · A pochi passi dalla casa</div>
+        <div class="meta" data-lang="de">Fiumelatte · Ein kurzer Weg vom Haus</div>
+        <p data-lang="en">A family-run place open for over a century — stone walls, vaulted ceilings, and Norma's slow home cooking with local lake fish and handmade pasta. Michelin-listed and worth booking. Closed Tuesdays.</p>
+        <p data-lang="it">Un posto a conduzione familiare aperto da oltre un secolo — muri di pietra, soffitti a volta, e la cucina lenta di Norma con pesce di lago e pasta fatta in casa. Segnalato dalla guida Michelin: meglio prenotare. Chiuso il martedì.</p>
+        <p data-lang="de">Ein familiengeführtes Lokal, seit über hundert Jahren in Betrieb — Steinmauern, Gewölbedecken und Normas langsame Heimküche mit Seefisch und hausgemachter Pasta. In der Michelin-Auswahl, am besten reservieren. Dienstags geschlossen.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">— 02</div>
+        <h3>Locanda Cavallino</h3>
+        <div class="meta" data-lang="en">Varenna · Lakefront terrace</div>
+        <div class="meta" data-lang="it">Varenna · Terrazza sul lago</div>
+        <div class="meta" data-lang="de">Varenna · Terrasse am See</div>
+        <p data-lang="en">Right on Piazza Martiri della Libertà, with a pergola terrace looking out over the ferry port. Modern Italian cooking with a lake-fish soul — the rabbit ravioli is the one to order. Small menu, creative, beautifully plated. Open February through October.</p>
+        <p data-lang="it">In Piazza Martiri della Libertà, con la terrazza sotto il pergolato che guarda al porto dei traghetti. Cucina italiana moderna con un'anima di lago — i ravioli al coniglio sono da provare. Menu piccolo, creativo, impiattato con cura. Aperto da febbraio a ottobre.</p>
+        <p data-lang="de">Direkt an der Piazza Martiri della Libertà, mit einer Pergola-Terrasse zum Fährhafen. Moderne italienische Küche mit Seefisch-Seele — die Kaninchen-Ravioli sind die Empfehlung. Kleine, kreative Karte, schön angerichtet. Geöffnet von Februar bis Oktober.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">— 03</div>
+        <h3>Ristorante Crotto di Pino</h3>
+        <div class="meta" data-lang="en">Pino · A short walk from the house</div>
+        <div class="meta" data-lang="it">Pino · A pochi passi dalla casa</div>
+        <div class="meta" data-lang="de">Pino · Ein kurzer Weg vom Haus</div>
+        <p data-lang="en">A short uphill walk from the house, in the tiny hamlet of Pino — with one of the most spectacular views you'll find around here. Chef Fabio cooks classic mountain-meets-lake — grilled meats, lake fish, pizzoccheri, truffle pasta — and pours homemade limoncello at the end.</p>
+        <p data-lang="it">Una breve camminata in salita dalla casa, nel piccolo borgo di Pino — con una delle viste più spettacolari della zona. Lo chef Fabio cucina la classica cucina di montagna e di lago — carni alla griglia, pesce, pizzoccheri, pasta al tartufo — e a fine pasto vi serve il limoncello fatto in casa.</p>
+        <p data-lang="de">Ein kurzer Aufstieg vom Haus aus, im kleinen Weiler Pino — mit einer der spektakulärsten Aussichten der Gegend. Chef Fabio kocht klassische Berg- und Seeküche — gegrilltes Fleisch, Seefisch, Pizzoccheri, Trüffelpasta — und reicht zum Abschluss den hausgemachten Limoncello.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">— 04</div>
+        <h3>Bar Il Molo</h3>
+        <div class="meta" data-lang="en">Varenna lakefront · Aperitivo</div>
+        <div class="meta" data-lang="it">Lungolago di Varenna · Aperitivo</div>
+        <div class="meta" data-lang="de">Seepromenade Varenna · Aperitivo</div>
+        <p data-lang="en">For your daily Aperol Spritz on the water. The olives are good, the people-watching is better, and at sunset the whole lake turns pink.</p>
+        <p data-lang="it">Per l'Aperol Spritz quotidiano sull'acqua. Le olive sono buone, ma osservare la gente è meglio, e al tramonto tutto il lago si tinge di rosa.</p>
+        <p data-lang="de">Für den täglichen Aperol Spritz direkt am Wasser. Die Oliven sind gut, das Leute-Beobachten noch besser, und bei Sonnenuntergang färbt sich der ganze See rosa.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">— 05</div>
+        <h3>Il Forno</h3>
+        <div class="meta" data-lang="en">Varenna · Bakery</div>
+        <div class="meta" data-lang="it">Varenna · Panetteria</div>
+        <div class="meta" data-lang="de">Varenna · Bäckerei</div>
+        <p data-lang="en">For breakfast pastries, focaccia, and bread that's better than anything you'll find at the supermarket. Open early, closes by 1pm.</p>
+        <p data-lang="it">Per le brioche del mattino, la focaccia e il pane, molto più buoni di quelli del supermercato. Apre presto, chiude alle 13.</p>
+        <p data-lang="de">Für Frühstücksgebäck, Focaccia und Brot, das besser ist als alles aus dem Supermarkt. Früh offen, um 13 Uhr zu.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">— 06</div>
+        <h3>Gelateria Riva</h3>
+        <div class="meta" data-lang="en">Varenna · Lakefront · Gelato</div>
+        <div class="meta" data-lang="it">Varenna · Lungolago · Gelato</div>
+        <div class="meta" data-lang="de">Varenna · Seepromenade · Gelato</div>
+        <p data-lang="en">Real gelato — the kind made daily and stored properly. The pistachio is non-negotiable. Cash only.</p>
+        <p data-lang="it">Gelato vero — fatto ogni giorno e conservato bene. Il pistacchio è obbligatorio. Solo contanti.</p>
+        <p data-lang="de">Echtes Gelato — täglich frisch und richtig gelagert. Die Pistazie ist Pflicht. Nur Bargeld.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- HOUSE INFO -->
+<section id="house" class="content reveal">
+  <div class="section-header">
+    <div class="section-eyebrow" data-lang="en">Practical Info</div>
+    <div class="section-eyebrow" data-lang="it">Informazioni Pratiche</div>
+    <div class="section-eyebrow" data-lang="de">Praktische Hinweise</div>
+
+    <h2 class="section-title">
+      <span data-lang="en">The House</span>
+      <span data-lang="it">La Casa</span>
+      <span data-lang="de">Das Haus</span>
+    </h2>
+
+    <p class="section-intro" data-lang="en">A few small things to make your stay easy. I treat the house with care — please do the same.</p>
+    <p class="section-intro" data-lang="it">Qualche piccola cosa per rendere il soggiorno semplice. Tratto la casa con cura — vi chiedo di fare lo stesso.</p>
+    <p class="section-intro" data-lang="de">Ein paar Kleinigkeiten, damit euer Aufenthalt einfach ist. Ich gehe mit dem Haus sorgsam um — bitte tut ihr das auch.</p>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule">
+      <svg class="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <h4 data-lang="en">Check-in & Check-out</h4>
+      <h4 data-lang="it">Check-in & Check-out</h4>
+      <h4 data-lang="de">Check-in & Check-out</h4>
+      <p data-lang="en">Self check-in from 4pm, departure by 10am. I'll send you all the details in advance — no need to wait for anyone.</p>
+      <p data-lang="it">Self check-in dalle 16, partenza entro le 10. Vi mando tutte le indicazioni in anticipo — non dovete aspettare nessuno.</p>
+      <p data-lang="de">Self check-in ab 16 Uhr, Abreise bis 10 Uhr. Ich schicke euch alle Details vorab — niemand muss euch erwarten.</p>
+    </div>
+
+    <div class="rule">
+      <svg class="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+        <line x1="12" y1="20" x2="12.01" y2="20"/>
+      </svg>
+      <h4 data-lang="en">Wi-Fi</h4>
+      <h4 data-lang="it">Wi-Fi</h4>
+      <h4 data-lang="de">WLAN</h4>
+      <p data-lang="en">Network and password are on the paper in the kitchen. Signal can be unstable depending on the weather — bear with it, it's part of the lake life.</p>
+      <p data-lang="it">Rete e password sul foglio in cucina. Il segnale può essere instabile a seconda del meteo — abbiate pazienza, fa parte della vita sul lago.</p>
+      <p data-lang="de">Name und Passwort stehen auf dem Zettel in der Küche. Das Signal kann je nach Wetter instabil sein — Geduld, das gehört zum Seeleben dazu.</p>
+    </div>
+
+    <div class="rule">
+      <svg class="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M3 3h2l2.4 12.5h13L22 7H6"/>
+        <circle cx="9" cy="20" r="1.5"/>
+        <circle cx="18" cy="20" r="1.5"/>
+      </svg>
+      <h4 data-lang="en">Groceries</h4>
+      <h4 data-lang="it">Spesa</h4>
+      <h4 data-lang="de">Einkaufen</h4>
+      <p data-lang="en">For a full shop, head to <em>Iperal</em> in Mandello. For everyday basics, there's a small market in Lierna, and Varenna has a few small shops too.</p>
+      <p data-lang="it">Per la spesa grande, andate all'<em>Iperal</em> di Mandello. Per le piccole cose di tutti i giorni, c'è un piccolo market a Lierna, e anche Varenna offre qualche negozio.</p>
+      <p data-lang="de">Für den Großeinkauf zum <em>Iperal</em> in Mandello. Für die kleinen Sachen des Alltags gibt's einen kleinen Laden in Lierna, und auch Varenna hat ein paar kleine Geschäfte.</p>
+    </div>
+
+    <div class="rule">
+      <svg class="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M3 6h18"/>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+      </svg>
+      <h4 data-lang="en">Recycling</h4>
+      <h4 data-lang="it">Raccolta Differenziata</h4>
+      <h4 data-lang="de">Mülltrennung</h4>
+      <p data-lang="en">Three-compartment bins under the kitchen sink — just sort as you go. The cleaning service takes everything out for you.</p>
+      <p data-lang="it">Bidoni a tre scomparti sotto il lavello — basta separare man mano. La pulizia si occupa di portare fuori tutto.</p>
+      <p data-lang="de">Drei-Kammer-Mülleimer unter der Spüle — einfach beim Wegwerfen trennen. Die Reinigung kümmert sich um die Entsorgung.</p>
+    </div>
+
+    <div class="rule">
+      <svg class="rule-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <h4 data-lang="en">Need Anything?</h4>
+      <h4 data-lang="it">Serve Qualcosa?</h4>
+      <h4 data-lang="de">Braucht Ihr Etwas?</h4>
+      <p data-lang="en">Just message me. I'm happy to help with reservations, taxis, or local tips.</p>
+      <p data-lang="it">Scrivetemi. Volentieri vi aiuto con prenotazioni, taxi o consigli locali.</p>
+      <p data-lang="de">Schreibt mir einfach. Ich helfe gern mit Reservierungen, Taxis oder lokalen Tipps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" style="background: var(--cream-warm); padding: 100px 24px;">
+  <section class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <div class="section-eyebrow" data-lang="en">Get in Touch</div>
+    <div class="section-eyebrow" data-lang="it">Mettetevi in Contatto</div>
+    <div class="section-eyebrow" data-lang="de">Kontakt Aufnehmen</div>
+
+    <h2 class="section-title">
+      <span data-lang="en">Stay in Touch</span>
+      <span data-lang="it">Restiamo in Contatto</span>
+      <span data-lang="de">In Verbindung Bleiben</span>
+    </h2>
+
+    <p class="section-intro" data-lang="en">Just to say hello — or, when you'd like to come back, message me directly.</p>
+    <p class="section-intro" data-lang="it">Solo per salutare — o, quando vorrete tornare, scrivetemi direttamente.</p>
+    <p class="section-intro" data-lang="de">Einfach zum Hallo sagen — oder, wenn ihr wiederkommen möchtet, schreibt mir direkt.</p>
+
+    <div class="contact-options">
+      <a href="https://wa.me/393513484911" target="_blank" rel="noopener" class="contact-option">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span class="contact-label" data-lang="en">WhatsApp</span>
+        <span class="contact-label" data-lang="it">WhatsApp</span>
+        <span class="contact-label" data-lang="de">WhatsApp</span>
+        <span class="contact-value">+39 351 348 4911</span>
+      </a>
+
+      <a href="mailto:hello@lakeviewpines.com" class="contact-option">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span class="contact-label" data-lang="en">Email</span>
+        <span class="contact-label" data-lang="it">Email</span>
+        <span class="contact-label" data-lang="de">E-Mail</span>
+        <span class="contact-value">hello@lakeviewpines.com</span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-script" data-lang="en">Make yourselves at home</div>
+  <div class="footer-script" data-lang="it">Sentitevi a casa</div>
+  <div class="footer-script" data-lang="de">Fühlt euch wie zuhause</div>
+
+  <div class="heart-divider">
+    <span class="line"></span>
+    <!-- Boat ornament instead of heart -->
+    <svg width="28" height="13" viewBox="0 0 28 13" fill="none" stroke="#e8d9b8" stroke-width="0.9">
+      <path d="M 2 7 Q 14 12, 26 7 L 23 4 L 5 4 Z"/>
+      <line x1="14" y1="4" x2="14" y2="0"/>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <p data-lang="en">Lake View Pines — A private guide for friends and family</p>
+  <p data-lang="it">Lake View Pines — Una guida privata per amici e famiglia</p>
+  <p data-lang="de">Lake View Pines — Ein privater Reiseführer für Freunde und Familie</p>
+
+  <div class="signature">Chiara</div>
+</footer>
+
+<script>
+  // Language switcher
+  const buttons = document.querySelectorAll('[data-lang-btn]');
+  const setLang = (lang) => {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.getAttribute('data-lang') === lang) {
+        el.classList.add('active-lang');
+      } else {
+        el.classList.remove('active-lang');
+      }
+    });
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  };
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang-btn')));
+  });
+  setLang('en');
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
